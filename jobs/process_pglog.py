@@ -1,7 +1,9 @@
 from models.model import LogStatment
 from utils.db import insert_batch
-from utils.logger import logger
+from utils.custom_log import logging
 from uuid import uuid4
+
+logger = logging.getLogger(__name__)
 
 def process_pglog(logs: list[LogStatment]):
     job_id = str(uuid4())

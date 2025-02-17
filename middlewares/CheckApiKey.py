@@ -1,9 +1,11 @@
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import Request, Response
 from uuid import uuid4
-from utils.logger import logger
+from utils.custom_log import logging
 from starlette.middleware.base import BaseHTTPMiddleware
 from config import env
+
+logger = logging.getLogger(__name__)
 
 class CheckApiKey(BaseHTTPMiddleware):
     def __init__(self, app):

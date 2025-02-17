@@ -1,7 +1,9 @@
 import psycopg2
 from psycopg2 import pool
-from utils.logger import logger
+from utils.custom_log import logging
 from config import env
+
+logger = logging.getLogger(__name__)
 
 connection_pool = psycopg2.pool.SimpleConnectionPool(
     2,

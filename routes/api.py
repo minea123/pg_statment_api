@@ -1,8 +1,10 @@
 from fastapi import APIRouter, status, Request, BackgroundTasks
 from models.model import LogStatment
-from utils.logger import logger
+from utils.custom_log import logging
 from utils.api_error_handler import handle_api_error
 from jobs.process_pglog import process_pglog
+
+logger = logging.getLogger(__name__)
 
 # Create an API router
 router = APIRouter()

@@ -1,9 +1,10 @@
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import Request
 from uuid import uuid4
-from utils.logger import logger
+from utils.custom_log import logging
 from starlette.middleware.base import BaseHTTPMiddleware
 
+logger = logging.getLogger(__name__)
 class LogRequest(BaseHTTPMiddleware):
     def __init__(self, app):
         super().__init__(app)

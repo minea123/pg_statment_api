@@ -6,7 +6,6 @@ from fastapi.responses import JSONResponse
 from routes.api import router
 from middlewares.LogRequest import LogRequest
 from middlewares.CheckApiKey import CheckApiKey
-from utils.logger import logger
 
 app = FastAPI()
 app.add_middleware(LogRequest)
