@@ -1,7 +1,8 @@
 import logging
+from json import dumps
 
 class FlexibleFormatter(logging.Formatter):
     def format(self, record):
-        if hasattr(record, 'mykey'):
-            record.msg = f"{record.msg} - {record.mykey}"
-        return super().format(record)
+        extra = '' if record._extra is None else dumps(record._extra, indent=2, ensure_ascii=False)
+        return super().format(record) + ' ' + extra
+

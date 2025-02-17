@@ -8,7 +8,8 @@ logger = logging.getLogger(__name__)
 def process_pglog(logs: list[LogStatment]):
     job_id = str(uuid4())
     try:
-        logger.debug(f'JOB [process_pglog][id={job_id}][docs={len(logs)}]: ', extra={'logs': logs})
+        log_as_dict = [log.dict() for log in logs]
+        logger.debug(f'JOB [process_pglog][id={job_id}][docs={len(logs)}]: ', extra={'logs': log_as_dict })
 
         # convert list of dict to list of tuple for insert batch
         def to_tuple(doc):
