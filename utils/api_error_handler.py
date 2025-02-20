@@ -1,5 +1,6 @@
 from fastapi import Request
 from errors.CustomErrorHandler import CustomException
 
+# todo
 def handle_api_error(request: Request, err: Exception):
-    raise CustomException('Error exception', 500, request)
+    raise err

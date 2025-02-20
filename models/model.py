@@ -1,59 +1,46 @@
 from pydantic import BaseModel
 from typing import Optional
+from datetime import datetime
 
 class LogStatment(BaseModel):
-    userid: Optional[str] = None
-    dbid: Optional[str] = None
-    toplevel: Optional[str] = None
-    queryid: Optional[str] = None
-    query: Optional[str] = None
-    plans: Optional[str] = None
-    total_plan_time: Optional[str] = None
-    min_plan_time: Optional[str] = None
-    max_plan_time: Optional[str] = None
-    mean_plan_time: Optional[str] = None
-    stddev_plan_time: Optional[str] = None
-    calls: Optional[str] = None
-    total_exec_time: Optional[str] = None
-    min_exec_time: Optional[str] = None
-    max_exec_time: Optional[str] = None
-    mean_exec_time: Optional[str] = None
-    stddev_exec_time: Optional[str] = None
-    rows: Optional[str] = None
-    shared_blks_hit: Optional[str] = None
-    shared_blks_read: Optional[str] = None
-    shared_blks_dirtied: Optional[str] = None
-    shared_blks_written: Optional[str] = None
-    local_blks_hit: Optional[str] = None
-    local_blks_read: Optional[str] = None
-    local_blks_dirtied: Optional[str] = None
-    local_blks_written: Optional[str] = None
-    temp_blks_read: Optional[str] = None
-    temp_blks_written: Optional[str] = None
-    blk_read_time: Optional[str] = None
-    blk_write_time: Optional[str] = None
-    wal_records: Optional[str] = None
-    wal_fpi: Optional[str] = None
-    wal_bytes: Optional[str] = None
-    datid: Optional[str] = None
-    client_addr: Optional[str] = None
-    client_port: Optional[str] = None
-    backend_start: Optional[str] = None
-    xact_start: Optional[str] = None
-    query_start: Optional[str] = None
-    state_change: Optional[str] = None
-    backend_xid: Optional[str] = None
-    backend_xmin: Optional[str] = None
-    query_id: Optional[str] = None
-    pid: Optional[str] = None
-    leader_pid: Optional[str] = None
-    usesysid: Optional[str] = None
-    client_hostname: Optional[str] = None
-    wait_event_type: Optional[str] = None
-    state: Optional[str] = None
-    backend_type: Optional[str] = None
-    wait_event: Optional[str] = None
-    application_name: Optional[str] = None
-    usename: Optional[str] = None
+    queryid: int
+    query: str
+    max_exec_time: float
+    rows: int
     datname: Optional[str] = None
-    created_at: Optional[str] = None
+    usename: Optional[str] = None
+    application_name: Optional[str] = None
+    client_addr: Optional[str] = None
+    backend_type: Optional[str] = None
+    total_plan_time: Optional[float] = 0
+    max_plan_time: Optional[float] = 0
+    total_exec_time: float
+    created_at: str
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

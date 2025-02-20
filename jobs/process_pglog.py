@@ -12,8 +12,9 @@ def process_pglog(logs: list[LogStatment]):
         logger.debug(f'JOB [process_pglog][id={job_id}][docs={len(logs)}]: ', extra={'logs': log_as_dict })
 
         # convert list of dict to list of tuple for insert batch
-        def to_tuple(doc):
+        def to_tuple(doc: LogStatment):
             return (
+                doc.queryid,
                 doc.query,
                 doc.max_exec_time,
                 doc.rows,
@@ -22,14 +23,17 @@ def process_pglog(logs: list[LogStatment]):
                 doc.application_name,
                 doc.client_addr,
                 doc.backend_type,
-                doc.created_at
+                doc.created_at,
+                doc.total_exec_time,
+                doc.total_plan_time,
+                doc.max_plan_time
             )
         
         records = list(map(to_tuple, logs))
 
         insert_query = """
-            INSERT INTO pg_logs (query, max_exec_time, rows, datname, usename, application_name, client_addr, backend_type, created_at)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO pg_logs (queryid, query, max_exec_time, rows, datname, usename, application_name, client_addr, backend_type, created_at, total_exec_time, total_plan_time, max_plan_time)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
 
         insert_batch(insert_query, records)
