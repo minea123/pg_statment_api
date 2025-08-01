@@ -26,14 +26,16 @@ def process_pglog(logs: list[LogStatment]):
                 doc.created_at,
                 doc.total_exec_time,
                 doc.total_plan_time,
-                doc.max_plan_time
+                doc.max_plan_time,
+                doc.server_name,
+                doc.server_ip
             )
         
         records = list(map(to_tuple, logs))
 
         insert_query = """
-            INSERT INTO pg_logs (queryid, query, max_exec_time, rows, datname, usename, application_name, client_addr, backend_type, created_at, total_exec_time, total_plan_time, max_plan_time)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO pg_logs (queryid, query, max_exec_time, rows, datname, usename, application_name, client_addr, backend_type, created_at, total_exec_time, total_plan_time, max_plan_time, server_name, server_ip)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
 
         insert_batch(insert_query, records)

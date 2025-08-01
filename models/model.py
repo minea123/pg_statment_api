@@ -16,6 +16,8 @@ class LogStatment(BaseModel):
     max_plan_time: Optional[float] = 0
     total_exec_time: float
     created_at: str
+    server_name: str = ''
+    server_ip: str = ''
     
     
     
